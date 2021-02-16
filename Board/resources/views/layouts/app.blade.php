@@ -39,6 +39,14 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('topic.index') }}">みんなの投稿</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('topic.create') }}">投稿する</a>
+                        </li>
+                        
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
