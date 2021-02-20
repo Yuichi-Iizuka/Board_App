@@ -18,7 +18,7 @@ class TopicController extends Controller
      */
     public function index()
     {
-        $items = Topic::all();
+        $items = Topic::with(['user'])->get();
         return view('topic.index',compact('items'));
     }
 
@@ -49,17 +49,6 @@ class TopicController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -78,8 +67,9 @@ class TopicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Topic $topic)
+    public function update(Request $request,$id)
     {
+        $topic = Topic::find($id);
         $topic->title = $request->title;
         $topic->body = $request->body;
         $topic->save();
@@ -92,8 +82,9 @@ class TopicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Topic $topic)
+    public function destroy($id)
     {
+        $topic = Topic::find($id);
         $topic->delete();
         return redirect('/topic');
     }

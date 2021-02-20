@@ -21,4 +21,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('topic','TopicController',['only'=>['index','create','edit','store','update','destroy']]);
+Route::resource('topic','TopicController');

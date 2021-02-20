@@ -20,7 +20,7 @@
           <a class="btn btn-primary" href="{{ route('topic.edit',$item->id)}}">
             編集する
           </a>
-          <form style="display: inline-block;" method="post" action="{{ route('topic.destroy',$item->id)}}">
+          <form class="d-inline-block" method="post" action="{{ route('topic.destroy',$item->id)}}">
             @csrf
             @method('delete')
             <button class="btn btn-danger">削除する</button>
