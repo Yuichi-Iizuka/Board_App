@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
+use phpDocumentor\Reflection\DocBlock\DescriptionFactory;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('topic','TopicController');
+
+Route::prefix('topic')->name('topic.')->group(function(){
+Route::put('/{topic}/like','LikeController@store')->name('like')->middleware('auth');
+Route::delete('/{topic}/like','LikeController@destory')->name('unlike')->middleware('auth');
+});
+

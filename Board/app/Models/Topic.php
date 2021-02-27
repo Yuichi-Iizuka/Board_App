@@ -17,9 +17,15 @@ class Topic extends Model
         'user_id',
     ];
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany('App\Models\User','likes')
+        ->withTimestamps();
     }
 
     

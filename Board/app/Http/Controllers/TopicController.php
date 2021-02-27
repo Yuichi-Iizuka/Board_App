@@ -18,7 +18,8 @@ class TopicController extends Controller
      */
     public function index()
     {
-        $items = Topic::with(['user'])->get();
+        $items = Topic::with(['users'])->get();
+
         return view('topic.index',compact('items'));
     }
 
