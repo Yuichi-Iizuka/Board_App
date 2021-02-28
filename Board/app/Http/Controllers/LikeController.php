@@ -20,7 +20,7 @@ class LikeController extends Controller
      */
     public function store(Request $request,Topic $topic)
     {
-        $topic->likes()->detach($request->user()->id);
+        
         $topic->likes()->attach($request->user()->id);
 
         return redirect('/topic');
